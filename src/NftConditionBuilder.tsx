@@ -85,7 +85,7 @@ export const NftConditionBuilder = ({
         <pre>
           {conditions?.conditions.map((condition, index) => (
             <div key={index}>
-              {JSON.stringify((condition as Condition).value, null, 2)}
+              {JSON.stringify((condition as Condition).toObj(), null, 2)}
             </div>
           ))}
         </pre>
@@ -104,7 +104,7 @@ export const NftConditionBuilder = ({
             <p>ERC721 Contract Address {ContractAddressInput}</p>
             <p>(Optional) TokenId {TokenIdInput}</p>
           </div>
-          <button onClick={onCreateCondition}>Create</button>
+          <button onClick={onCreateCondition}>Create Conditions</button>
         </div>
         {ConditionList}
       </div>
