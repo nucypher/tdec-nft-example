@@ -14,8 +14,6 @@ import { Decrypt } from "./Decrypt";
 import { Spinner } from "./Spinner";
 import { StrategyBuilder } from "./StrategyBuilder";
 
-declare const window: any;
-
 export default function App() {
   const { activateBrowserWallet, deactivate, account } = useEthers();
 
