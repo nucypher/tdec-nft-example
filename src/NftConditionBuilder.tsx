@@ -11,7 +11,7 @@ interface Props {
 export const NftConditionBuilder = ({
   conditions,
   setConditions,
-  enabled,
+  enabled
 }: Props) => {
   const { library } = useEthers();
   const SQUARE_NFT_RINKEBY_ADDRESS =
@@ -56,8 +56,8 @@ export const NftConditionBuilder = ({
         parameters: [parseInt(tokenId, 10)],
         returnValueTest: {
           comparator: "==",
-          value: ":userAddress",
-        },
+          value: ":userAddress"
+        }
       });
     }
     return new Conditions.EvmCondition({
@@ -68,8 +68,8 @@ export const NftConditionBuilder = ({
       parameters: [":userAddress"],
       returnValueTest: {
         comparator: ">",
-        value: "0",
-      },
+        value: "0"
+      }
     });
   };
 
