@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mumbai, Rinkeby, useEthers } from "@usedapp/core";
+import { Mumbai, Goerli, useEthers } from "@usedapp/core";
 import { ethers } from "ethers";
 import { Cohort, DeployedStrategy, Strategy } from "@nucypher/nucypher-ts";
 
@@ -17,14 +17,12 @@ export const StrategyBuilder = ({ setDeployedStrategy, setLoading }: Props) => {
     const cohortConfig = {
       threshold,
       shares,
-      porterUri: "http://143.198.239.218",
+      porterUri: "https://porter-lynx.nucypher.community",
     };
     const goodUrsulas = [
-      "0xCe692F6fA86319Af43050fB7F09FDC43319F7612",
-      "0xbD27e413b1460d51fe1b6b4b64E5dAFC3541b12B",
-      "0x53f72787d33b29b0f1d5485f4b0B1281FbE8e613",
-      "0xb0488A74Ad06DC0DA2031cBD720537C48d63EfD7",
-      "0xbC40aE0041b9b0AE3D012a40492B42d1E0EE294F",
+      "0xb15d5A4e2be34f4bE154A1b08a94Ab920FfD8A41",
+      "0x48C8039c32F4c6f5cb206A5911C8Ae814929C16B",
+      "0x210eeAC07542F815ebB6FD6689637D8cA2689392",
     ].slice(0, shares); // TODO: Remove after updating nucypher-ts
     const cohort = await Cohort.create(
       cohortConfig,
@@ -51,7 +49,7 @@ export const StrategyBuilder = ({ setDeployedStrategy, setLoading }: Props) => {
     setDeployedStrategy(deployedStrategy);
     console.log("Deployed Strategy: ", deployedStrategy);
 
-    await switchNetwork(Rinkeby.chainId);
+    await switchNetwork(Goerli.chainId);
     setLoading(false);
   };
 
