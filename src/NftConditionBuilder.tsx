@@ -20,6 +20,7 @@ export const NftConditionBuilder = ({
     SQUARE_NFT_RINKEBY_ADDRESS
   );
   const [tokenId, setTokenId] = useState("");
+  const [chain, setChain] = useState("Görli");
 
   if (!enabled || !library) {
     return <></>;
@@ -41,12 +42,12 @@ export const NftConditionBuilder = ({
     SQUARE_NFT_RINKEBY_ADDRESS
   );
   const TokenIdInput = makeInput(setTokenId);
+  const chainInput = makeInput(setChain);
 
   const makeEvmCondition = (): Condition => {
     // TODO: Capitalizing is required
     const capitalizeFirstLetter = (s: string) =>
       s.charAt(0).toUpperCase() + s.slice(1);
-    const chain = capitalizeFirstLetter(library.network.name);
     if (tokenId) {
       return new Conditions.EvmCondition({
         contractAddress,
@@ -103,6 +104,7 @@ export const NftConditionBuilder = ({
           <div>
             <p>ERC721 Contract Address {ContractAddressInput}</p>
             <p>(Optional) TokenId {TokenIdInput}</p>
+            <p>Chain {chainInput}</p>
           </div>
           <button onClick={onCreateCondition}>Create Conditions</button>
         </div>
