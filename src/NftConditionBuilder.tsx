@@ -11,7 +11,7 @@ interface Props {
 export const NftConditionBuilder = ({
   conditions,
   setConditions,
-  enabled,
+  enabled
 }: Props) => {
   const { library } = useEthers();
   const SQUARE_NFT_RINKEBY_ADDRESS =
@@ -20,6 +20,7 @@ export const NftConditionBuilder = ({
     SQUARE_NFT_RINKEBY_ADDRESS
   );
   const [tokenId, setTokenId] = useState("");
+  const [chain, setChain] = useState("Görli");
 
   if (!enabled || !library) {
     return <></>;
@@ -41,12 +42,12 @@ export const NftConditionBuilder = ({
     SQUARE_NFT_RINKEBY_ADDRESS
   );
   const TokenIdInput = makeInput(setTokenId);
+  const chainInput = makeInput(setChain);
 
   const makeEvmCondition = (): Condition => {
     // TODO: Capitalizing is required
     const capitalizeFirstLetter = (s: string) =>
       s.charAt(0).toUpperCase() + s.slice(1);
-    const chain = capitalizeFirstLetter(library.network.name);
     if (tokenId) {
       return new Conditions.EvmCondition({
         contractAddress,
@@ -56,8 +57,8 @@ export const NftConditionBuilder = ({
         parameters: [parseInt(tokenId, 10)],
         returnValueTest: {
           comparator: "==",
-          value: ":userAddress",
-        },
+          value: ":userAddress"
+        }
       });
     }
     return new Conditions.EvmCondition({
@@ -68,8 +69,8 @@ export const NftConditionBuilder = ({
       parameters: [":userAddress"],
       returnValueTest: {
         comparator: ">",
-        value: "0",
-      },
+        value: "0"
+      }
     });
   };
 
@@ -103,6 +104,7 @@ export const NftConditionBuilder = ({
           <div>
             <p>ERC721 Contract Address {ContractAddressInput}</p>
             <p>(Optional) TokenId {TokenIdInput}</p>
+            <p>Chain {chainInput}</p>
           </div>
           <button onClick={onCreateCondition}>Create Conditions</button>
         </div>
