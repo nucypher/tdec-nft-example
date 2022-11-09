@@ -15,7 +15,7 @@ export const NftConditionBuilder = ({
 }: Props) => {
   const { library } = useEthers();
   const SQUARE_NFT_RINKEBY_ADDRESS =
-    "0x18df9f6c606B2C4400D69Eeed2684cd1Aa501b8D";
+    "0x39Ec448b891c476e166b3C3242A90830DB556661";
   const [contractAddress, setContractAddress] = useState(
     SQUARE_NFT_RINKEBY_ADDRESS
   );
@@ -42,7 +42,7 @@ export const NftConditionBuilder = ({
     SQUARE_NFT_RINKEBY_ADDRESS
   );
   const TokenIdInput = makeInput(setTokenId);
-  const chainInput = makeInput(setChain);
+  const chainInput = makeInput(setChain, "Görli");
 
   const makeEvmCondition = (): Condition => {
     // TODO: Capitalizing is required
