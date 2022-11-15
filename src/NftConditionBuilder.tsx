@@ -43,7 +43,7 @@ export const NftConditionBuilder = ({
   ) => (
     <input
       type="number"
-      onChange={(e: any) => onChange(e.target.value)}
+      onChange={(e: any) => onChange(Number.parseInt(e.target.value))}
       defaultValue={defaultValue}
     />
   );
