@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import { useEthers } from "@usedapp/core";
 import { ethers } from "ethers";
 
-import { NftConditionBuilder } from "./NftConditionBuilder";
+import { ConditionBuilder } from "./ConditionBuilder";
 import { Encrypt } from "./Encrypt";
 import { Decrypt } from "./Decrypt";
 import { Spinner } from "./Spinner";
@@ -101,7 +101,7 @@ export default function App() {
         setDeployedStrategy={setDeployedStrategy}
       />
 
-      <NftConditionBuilder
+      <ConditionBuilder
         enabled={!!deployedStrategy}
         conditions={conditions}
         setConditions={setConditions}
