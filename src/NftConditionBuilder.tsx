@@ -14,10 +14,10 @@ export const NftConditionBuilder = ({
   enabled
 }: Props) => {
   const { library } = useEthers();
-  const SQUARE_NFT_RINKEBY_ADDRESS =
-    "0x39Ec448b891c476e166b3C3242A90830DB556661";
+  const GOERLI_NFT_ADDRESS =
+    "0x932Ca55B9Ef0b3094E8Fa82435b3b4c50d713043"; // https://goerli-nfts.vercel.app/
   const [contractAddress, setContractAddress] = useState(
-    SQUARE_NFT_RINKEBY_ADDRESS
+    GOERLI_NFT_ADDRESS
   );
   const [tokenId, setTokenId] = useState("");
   const [chain, setChain] = useState(5);
@@ -50,7 +50,7 @@ export const NftConditionBuilder = ({
 
   const ContractAddressInput = makeInput(
     setContractAddress,
-    SQUARE_NFT_RINKEBY_ADDRESS
+    GOERLI_NFT_ADDRESS
   );
   const TokenIdInput = makeInput(setTokenId);
   const chainInput = makeChainInput(setChain, 5);
