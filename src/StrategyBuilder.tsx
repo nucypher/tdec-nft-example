@@ -30,9 +30,7 @@ export const StrategyBuilder = ({ setDeployedStrategy, setLoading }: Props) => {
     const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
 
     const cohort = await makeCohort();
-    const strategy = Strategy.create(
-      cohort
-    );
+    const strategy = Strategy.create(cohort);
     console.log("Created strategy: ", strategy);
 
     const deployedStrategy = await strategy.deploy("test", web3Provider);
@@ -50,14 +48,14 @@ export const StrategyBuilder = ({ setDeployedStrategy, setLoading }: Props) => {
       <input
         id="thresholds"
         type="number"
-        defaultValue={1}
+        defaultValue={2}
         onChange={(e) => setThreshold(parseInt(e.currentTarget.value))}
       />
       <label htmlFor="shares">Select Shares:</label>
       <input
         id="shares"
         type="number"
-        defaultValue={1}
+        defaultValue={3}
         onChange={(e) => setShares(parseInt(e.currentTarget.value))}
       />
       <button onClick={deployStrategy}>Deploy Strategy</button>
