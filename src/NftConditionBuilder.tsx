@@ -56,9 +56,6 @@ export const NftConditionBuilder = ({
   const chainInput = makeChainInput(setChain, 5);
 
   const makeEvmCondition = (): Condition => {
-    // TODO: Capitalizing is required
-    const capitalizeFirstLetter = (s: string) =>
-      s.charAt(0).toUpperCase() + s.slice(1);
     if (tokenId) {
       return new Conditions.EvmCondition({
         contractAddress,
